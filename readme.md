@@ -58,7 +58,7 @@ For example, navigate to the binary directory for nonprod data
 Update your project name in 'main.tf' files within the folder for the type of data feeds you want (FIX Binary or JSON).  This is used to ensure you create the subscriptions in your Google Cloud project.  
 
 `
-
+  
  locals {
   customer_project = "YOURPROJECTNAME"
   ...
@@ -70,6 +70,7 @@ Update your project name in 'main.tf' files within the folder for the type of da
 Run Terraform Init, Terrafrom Plan, and then Terraform Apply
 
 `
+  
  $ terraform init
    
  $ terraform plan
