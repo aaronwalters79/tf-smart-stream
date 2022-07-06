@@ -41,43 +41,29 @@ You will need to establish a CME account and order the services.  All customers 
 Set the environment variable so that Terraform knows to use your Service Account and not your current user account.  Replace SERVICE ACCOUNT ALIAS and YOURPROJECT with your specific service account alias used when onboarding to the CME Service and created in Step 1.
 
 
-`
-  $ export GOOGLE_IMPERSONATE_SERVICE_ACCOUNT=SERVICE-ACCOUNT-ALIAS@YOURPROJECTNAME.iam.gserviceaccount.com
-`
+
+$ export GOOGLE_IMPERSONATE_SERVICE_ACCOUNT=SERVICE-ACCOUNT-ALIAS@YOURPROJECTNAME.iam.gserviceaccount.com
 
 There are several root folders supplied in the script, 1 for non-production connections to FIX Binary data, 1 for non-production connections to JSON data, 1 for production FIX Binary Data, and 1 for product JSON data. These are nearly the same scripts with the only changes being the specific project hosting the Topics (found in the main.tf file) as well as the list of Topic names in each environment found in the (found in the *-vars.tf file).
 
 For example, navigate to the binary directory for nonprod data
 
-`
   $ cd tf-smart-stream-binary-nonprod
-
-`
 
 
 Update your project name in 'main.tf' files within the folder for the type of data feeds you want (FIX Binary or JSON).  This is used to ensure you create the subscriptions in your Google Cloud project.  
 
-`
-  
- locals {
+locals {
   customer_project = "YOURPROJECTNAME"
   ...
   }
 
-`
-
 # 5 Connect
 Run Terraform Init, Terrafrom Plan, and then Terraform Apply
 
-`
-  
- $ terraform init
-   
- $ terraform plan
-   
- $ terraform apply
-   
-`
+$ terraform init
+$ terraform plan
+$ terraform apply
 
 # What is really happening
 
