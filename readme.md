@@ -50,7 +50,7 @@ There are several root folders supplied in the script, 1 for non-production conn
 For example, navigate to the binary directory for nonprod data
 
 `
-$ cd tf-smart-stream-binary-nonprod
+  $ cd tf-smart-stream-binary-nonprod
 
 `
 
@@ -59,7 +59,7 @@ Update your project name in 'main.tf' files within the folder for the type of da
 
 `
 
-locals {
+ locals {
   customer_project = "YOURPROJECTNAME"
   ...
   }
@@ -70,12 +70,12 @@ locals {
 Run Terraform Init, Terrafrom Plan, and then Terraform Apply
 
 `
-$ terraform init
-  
-$ terraform plan
-  
-$ terraform apply
-  
+ $ terraform init
+   
+ $ terraform plan
+   
+ $ terraform apply
+   
 `
 
 # What is really happening
