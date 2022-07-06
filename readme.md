@@ -15,7 +15,7 @@ As background, this is my first attempt at using [Terraform](https://www.terrafo
 1. Run terraform
 
 
-# 1 Create Service Account in your GCP Project
+## 1) Create Service Account in your GCP Project
 
 1. Login to cloud.google.com and navigate to IAM & Admin in the side menu, then select Service Accounts.
 1. Create a Service Account by Clicking 'Create Service Account'
@@ -24,32 +24,32 @@ As background, this is my first attempt at using [Terraform](https://www.terrafo
 1. Finally, if you plan on using these scripts within your personal GCP login, navigate to IAM, find your personal login listed and click the pencil icon on the far right. Add _Service Account Token Creator_ to your role.  This will enable you to directly act as the service account when logged into the console.
 
 
-# 2 Create CME Smart Stream access request via CME
+## 2) Create CME Smart Stream access request via CME
 Now that you have a Service Account, you must create an order with CME and supply the Service Account alias in that process. Your alias for your Service Account will look something like: SERVICEACCOUNTNAME@YOURROJECTNAME.iam.gserviceaccount.com
 
 You will need to establish a CME account and order the services.  All customers must start with Certification onboarding which is a free environment that allows for development.  (CME Data Products Onboarding)[https://dataservices.cmegroup.com/en-us/Data-Products]
 
-# 3 Copy Repo
-<INSERT Git Copy Statements Here When Posted>
+## 3) Copy Repo
+Use the following to copy this repo into your google cloud shell.  
 
 [![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/aaronwalters79/tf-smart-stream.git)
 
 
 
-# 4 Configure Critical Variables in  Terrform Script
+## 4) Configure Critical Variables in  Terrform Script
 
 Set the environment variable so that Terraform knows to use your Service Account and not your current user account.  Replace SERVICE ACCOUNT ALIAS and YOURPROJECT with your specific service account alias used when onboarding to the CME Service and created in Step 1.
 
 
-
+`
 $ export GOOGLE_IMPERSONATE_SERVICE_ACCOUNT=SERVICE-ACCOUNT-ALIAS@YOURPROJECTNAME.iam.gserviceaccount.com
-
+`
 There are several root folders supplied in the script, 1 for non-production connections to FIX Binary data, 1 for non-production connections to JSON data, 1 for production FIX Binary Data, and 1 for product JSON data. These are nearly the same scripts with the only changes being the specific project hosting the Topics (found in the main.tf file) as well as the list of Topic names in each environment found in the (found in the *-vars.tf file).
 
 For example, navigate to the binary directory for nonprod data
 
-  $ cd tf-smart-stream-binary-nonprod
-
+` $ cd tf-smart-stream-binary-nonprod
+`
 
 Update your project name in 'main.tf' files within the folder for the type of data feeds you want (FIX Binary or JSON).  This is used to ensure you create the subscriptions in your Google Cloud project.  
 
@@ -58,12 +58,14 @@ locals {
   ...
   }
 
-# 5 Connect
+## 5) Connect
 Run Terraform Init, Terrafrom Plan, and then Terraform Apply
 
-$ terraform init
-$ terraform plan
-$ terraform apply
+`$ terraform init`
+
+`$ terraform plan`
+
+`$ terraform apply`
 
 # What is really happening
 
@@ -74,9 +76,9 @@ The Terraform is using configuration set in the *-*-var.tf file for each type of
 
 
 # Links and Sources for reference 
-(Terraform Docs for PubSub Subscriptions with Topic in Different Project)[https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/pubsub_subscription#example-usage---pubsub-subscription-different-project]
+[Terraform Docs for PubSub Subscriptions with Topic in Different Project](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/pubsub_subscription#example-usage---pubsub-subscription-different-project)
 
-(Using Service Accounts in Terraform)[https://cloud.google.com/blog/topics/developers-practitioners/using-google-cloud-service-account-impersonation-your-terraform-code]
+[Using Service Accounts in Terraform](https://cloud.google.com/blog/topics/developers-practitioners/using-google-cloud-service-account-impersonation-your-terraform-code)
 
-(CME Formats and Smart Stream Documentation)[https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+Smart+Stream+on+GCP]
+[CME Formats and Smart Stream Documentation](https://www.cmegroup.com/confluence/display/EPICSANDBOX/CME+Smart+Stream+on+GCP)
 
