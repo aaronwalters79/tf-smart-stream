@@ -71,8 +71,11 @@ Run Terraform Init, Terrafrom Plan, and then Terraform Apply
 
 '''
 $ terraform init
+  
 $ terraform plan
+  
 $ terraform apply
+  
 
 '''
 
