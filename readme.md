@@ -32,8 +32,11 @@ You will need to establish a CME account and order the services.  All customers 
 # 3 Copy Repo
 <INSERT Git Copy Statements Here When Posted>
 
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/aaronwalters79/tf-smart-stream.git)
 
-# 4 Configure Critical Variables in  STerrform Script
+
+
+# 4 Configure Critical Variables in  Terrform Script
 
 Set the environment variable so that Terraform knows to use your Service Account and not your current user account.  Replace SERVICE ACCOUNT ALIAS and YOURPROJECT with your specific service account alias used when onboarding to the CME Service and created in Step 1.
 
